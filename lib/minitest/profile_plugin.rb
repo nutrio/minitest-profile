@@ -26,15 +26,17 @@ module Minitest
       results << [result.time, result.location]
     end
 
+    HOW_MANY = 20
+
     def report
       return unless passed?
       puts
-      puts "=" * 80
-      puts "Your 10 Slowest Tests"
-      puts "=" * 80
+      puts "=" * 60
+      puts "Your #{HOW_MANY} Slowest Tests"
+      puts "=" * 60
       puts
-      sorted_results[0,10].each do |time, test_name|
-        puts "#{sprintf("%7.4f",time)}ms - #{test_name}"
+      sorted_results[0,HOW_MANY].each do |time, test_name|
+        puts "#{sprintf("%7.2f",time)}s - #{test_name}"
       end
 
       puts
