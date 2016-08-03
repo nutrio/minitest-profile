@@ -1,7 +1,6 @@
 require 'minitest'
 
 module Minitest
-
   def self.plugin_profile_options(opts, options)
     opts.on("--profile", "Display list of slowest tests") do |p|
       options[:profile] = true
@@ -13,7 +12,7 @@ module Minitest
   end
 
   class ProfileReporter < AbstractReporter
-    VERSION = "0.0.2"
+    VERSION = "0.0.3".freeze
 
     attr_accessor :io, :results
 
@@ -35,8 +34,8 @@ module Minitest
       puts "Your #{HOW_MANY} Slowest Tests"
       puts "=" * 60
       puts
-      sorted_results[0,HOW_MANY].each do |time, test_name|
-        puts "#{sprintf("%7.2f",time)}s - #{test_name}"
+      sorted_results[0, HOW_MANY].each do |time, test_name|
+        puts "#{sprintf("%7.2f", time)}s - #{test_name}"
       end
 
       puts
